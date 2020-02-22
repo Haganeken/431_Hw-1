@@ -1,0 +1,111 @@
+<!--
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="styles.css">
+<body>
+
+<form action="gallery.php" method="post" enctype="multipart/form-data">
+  <h2>Add Photo to Gallery</h2>
+  <br>
+
+
+  <div class="row">
+  <div class="column">
+    <p> Photo name: <br>
+        Date taken: <br>
+        Photographer: <br>
+        Location: <br>
+    </p>
+  </div>
+  <div class="column">
+    <input type="text" name="photoname"><br>
+    <input type="text" name="date"><br>
+    <input type="text" name="photographer"><br>
+    <input type="text" name="location">
+  </div>
+</div>
+
+  Select image to upload:
+  <input type="file" name="file" id="file"><br>
+  <input type="submit" value="Submit Image" name="submit">
+  </form>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Image Upload</title>
+<style type="text/css">
+   #content{
+   	width: 50%;
+   	margin: 20px auto;
+   	border: 1px solid #cbcbcb;
+   }
+   form{
+   	width: 50%;
+   	margin: 20px auto;
+   }
+   form div{
+   	margin-top: 5px;
+   }
+   #img_div{
+   	width: 80%;
+   	padding: 5px;
+   	margin: 15px auto;
+   	border: 1px solid #cbcbcb;
+   }
+   #img_div:after{
+   	content: "";
+   	display: block;
+   	clear: both;
+   }
+   img{
+   	float: left;
+   	margin: 5px;
+   	width: 300px;
+   	height: 140px;
+   }
+</style>
+</head>
+<body>
+<div id="content">
+
+  <form method="POST" action="gallery.php" enctype="multipart/form-data">
+  	<input type="hidden" name="size" value="1000000">
+  	<div>
+  	  <input type="file" name="image">
+  	</div>
+  	<div>
+      <textarea
+      	id="text"
+      	cols="40"
+      	rows="1"
+      	name="name"
+      	placeholder="Photo name"></textarea>
+        <textarea
+        	id="text"
+        	cols="40"
+        	rows="1"
+        	name="date"
+        	placeholder="Date"></textarea>
+          <textarea
+          	id="text"
+          	cols="40"
+          	rows="1"
+          	name="photographer"
+          	placeholder="Photographer"></textarea>
+            <textarea
+            	id="text"
+            	cols="40"
+            	rows="1"
+            	name="location"
+            	placeholder="Location"></textarea>
+  	</div>
+  	<div>
+  		<button type="submit" name="upload">POST</button>
+  	</div>
+  </form>
+</div>
+</body>
+</html>
