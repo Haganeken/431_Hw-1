@@ -23,18 +23,7 @@ if (!$db) {
 
   // Initialize message variable
   $msg = "";
-  $result = mysqli_query($db, "SELECT * FROM images");
-  //query, get all from db
-  //print image and data
-  while ($row = mysqli_fetch_array($result)) {
-    echo "<div id='img_div'>";
-      echo "<img src='uploads/".$row['image']."' >";
-      echo "<p>".$row['name']."</p>";
-      echo "<p>".$row['date']."</p>";
-      echo "<p>".$row['photographer']."</p>";
-      echo "<p>".$row['location']."</p>";
-    echo "</div>";
-  }
+
   //When upload button is clicked
   if (isset($_POST['upload'])) {
   	//image file name
@@ -62,7 +51,18 @@ if (!$db) {
   	}
   }
 
-
+  $result = mysqli_query($db, "SELECT * FROM images");
+  //query, get all from db
+  //print image and data
+  while ($row = mysqli_fetch_array($result)) {
+    echo "<div id='img_div'>";
+      echo "<img src='uploads/".$row['image']."' height=15% width=15% >";
+      echo "<p>".$row['name']."</p>";
+      echo "<p>".$row['date']."</p>";
+      echo "<p>".$row['photographer']."</p>";
+      echo "<p>".$row['location']."</p>";
+    echo "</div>";
+  }
 
 ?>
 </tr>
