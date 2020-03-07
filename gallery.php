@@ -4,10 +4,19 @@
   <title>Gallery</title>
   <body>
     <a href="index.html">Upload photo</a>
+    <form action='gallery.php' method='post' name='value'>
+      <!-- drop down menu -->
+      <select name="value">
+        <option value="AZ">Name:A-Z</option>
+        <option value="ZA">Name:Z-A</option>
+        <option value="Photog">Photographer</option>
+        <option value="Loc">Location</option>
+      </select>
+      <br />
+      <input type='submit' value= 'Filter'>
+    </form>
     <h1>Photo gallery</h1>
     <div align="center">
-      <table style="width: 100%; border: 0">
-        <tr>
 
 
 
@@ -63,9 +72,34 @@ if (!$db) {
       echo "<p>".$row['location']."</p>";
     echo "</div>";
   }
+  // Post value for drop down menu
+  if(isset($_POST['value'])) {
+
+    //set table column to query value
+    $column = $_POST['value'];
+
+    //Selection query
+    $query = "SELECT ". $column . " FROM images";
+
+    //db query
+    $sql = mysqli_query($db,$query);
+
+    // Loop through results
+    while ($row = mysqli_fetch_array ($sql)){
+      echo "<div id='img_div'>";
+        echo "<img src='uploads/".$row['image']."' height=15% width=15% >";
+        echo "<p>".$row['name']."</p>";
+        echo "<p>".$row['date']."</p>";
+        echo "<p>".$row['photographer']."</p>";
+        echo "<p>".$row['location']."</p>";
+        echo "</div>";
+      }
 
 ?>
-</tr>
+<!--
+
+ </tr>
+-->
 </div>
 </body>
 </html>
